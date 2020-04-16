@@ -4,9 +4,10 @@ import words
 import random
 
 
-def print_pause(message_to_print):
+def print_pause(message_to_print, sleep_time=2):
+    # change delay time according to sleep_time
     print(message_to_print)
-    time.sleep(2)
+    time.sleep(sleep_time)
 
 
 def intro(item):
@@ -63,39 +64,45 @@ def house(item):
                     "what with only having a "
                     + item[1] + ".")
 
-    option = input("Would you like to (1) fight or (2) run away?\n")
-    if option == '1':
-        if '1' in item:
-            # user has the final weapon
-            print_pause("As the " + item[0] +
-                        " moves to attack, you unseath your new " + item[2])
-            print_pause("The " + item[2] + " shines brightly in your hands "
-                        "as you brace yourself for the attack.")
-            print_pause("But the " + item[0] +
-                        " takes one look at your shiny toy and runs away!")
-            print_pause("You have rid the town of the gorgon. "
-                        "You are victorious!")
-            game_finish()
-        elif random.randint(1, 10) % 2 != 0:
-            # random set of event
-            # without final weapon
-            print_pause("You do your best....")
-            print_pause("But your " + item[1] +
-                        " is no match for the " + item[0] + ".")
-            print_pause("You have been defeated!")
-            game_finish()
-        else:
-            print_pause("You do your best....")
-            print_pause("You manage to injure the " + item[0] +
-                        "'s right eye with the help of your " + item[1] + ".")
-            print_pause("You barely make it back into the field. "
+    option = ''
+    while option != '1' or option != '2':
+        option = input("Would you like to (1) fight or (2) run away?\n")
+        if option == '1':
+            if '1' in item:
+                # user has the final weapon
+                print_pause("As the " + item[0] +
+                            " moves to attack, you unseath your new "
+                            + item[2])
+                print_pause("The " + item[2] +
+                            " shines brightly in your hands "
+                            "as you brace yourself for the attack.")
+                print_pause("But the " + item[0] +
+                            " takes one look at your shiny toy and runs away!")
+                print_pause("You have rid the town of the gorgon. "
+                            "You are victorious!")
+                game_finish()
+            elif random.randint(1, 10) % 2 != 0:
+                # random set of event
+                # without final weapon
+                print_pause("You do your best....")
+                print_pause("But your " + item[1] +
+                            " is no match for the " + item[0] + ".")
+                print_pause("You have been defeated!")
+                game_finish()
+                break
+            else:
+                print_pause("You do your best....")
+                print_pause("You manage to injure the " + item[0] +
+                            "'s right eye with the help of your "
+                            + item[1] + ".")
+                print_pause("You barely make it back into the field. "
+                            "Luckily, you dont seem to have been followed.")
+                choice(item)
+
+        elif option == "2":
+            print_pause("You run back into the field. "
                         "Luckily, you dont seem to have been followed.")
             choice(item)
-
-    elif option == "2":
-        print_pause("You run back into the field. "
-                    "Luckily, you dont seem to have been followed.")
-        choice(item)
 
 
 def cave(item):
@@ -131,10 +138,11 @@ def choice(item):
 
 
 def game_finish():
-    play_again = input("Would you like to play again? (y/n)\n")
-    if play_again.lower() == 'y':
+    print_pause("Game Over!")
+    play_again = input("Would you like to play again? (y/n)\n").lower()
+    if play_again == 'y':
         play_game()
-    elif play_again.lower() == 'n':
+    elif play_again == 'n':
         print_pause("Thank you for playing!")
     else:
         game_finish()
