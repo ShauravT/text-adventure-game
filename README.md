@@ -14,8 +14,8 @@ The project is a text based adventure game.
 ## Project Requirements
 
 * Descriptions are printed to the console for the player to see.
-* The time.sleep function is used to create delays between messages so that they aren't all printed at once.
-* The random.choice or random.randint function is used to influence the game so that each game is different in some way.
+* The `time.sleep` function is used to create delays between messages so that they aren't all printed at once.
+* The `random.choice` or `random.randint` function is used to influence the game so that each game is different in some way.
 * The input function is used to ask the player what they would like to do.
 * The player's choices affect what happens in the game, including:
   * Whether the player wins or loses
