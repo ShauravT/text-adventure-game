@@ -1,7 +1,7 @@
 # Adventure Game
 
  * Nanodegree: Intro to Programming
- * Module: Intro to Python
+ * Module: Python
 
 ## Project Summary
 
@@ -47,6 +47,11 @@ $ pip install pycodestyle
 $ pip install --upgrade pycodestyle
 $ pip uninstall pycodestyle
 ```
+* Run project on terminal
+```
+python3 game.py
+```
+
 ## License
 
 `adventure game` is [MIT](https://github.com/Shaurav43/adventure_game/blob/master/LICENSE) licensed.
